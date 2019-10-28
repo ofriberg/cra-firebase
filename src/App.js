@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -10,14 +10,13 @@ import './App.css';
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-class App extends Component {
-  render() {
-    const {
-      user,
-      signOut,
-      signInWithGoogle,
-    } = this.props;
 
+const App = (props) => {
+  const { user,
+    signOut,
+    signInWithGoogle} = props;
+    const {uid} = {...user };
+      console.log(user);
     return (
       <div className="App">
         <header className="App-header">
@@ -36,8 +35,8 @@ class App extends Component {
         </header>
       </div>
     );
-  }
 }
+
 
 const firebaseAppAuth = firebaseApp.auth();
 
